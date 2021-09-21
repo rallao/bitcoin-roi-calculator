@@ -11,18 +11,23 @@
 </head>
 <body>
     <h1>Check how much could you have</h1>
-    <p>How much you would have if you had bought $1,000 on 12/20/16 in Bitcoin</p>
-    <input list="asset" />
-    <datalist id="asset">
-      <option value="Bitcoin"></option>
-      <option value="Ethereum"></option>
-    </datalist>
+    <div id=container>
+        <!--TODO: Connect all the forms and calendars to bring the info when teh button is pressed -->
+        <p>How much you would have if you had bought</p>
+        <input type="text" placeholder="$1.000">
+        <p>in</p>
+        <input list="asset" />
+        <datalist id="asset" placeholder="Select asset">
+            <option value="Bitcoin"></option>
+            <option value="Ethereum"></option>
+        </datalist>
+        <p>on</p> 
     <form action="">
-        <label">
+        <label>
             <input type="date" name="month" id="month">
         </label>
     </form>
-    <br>    
-    <button type="button">Ok show me 🥲</button>
+        <button type="button">Ok show me 🥲</button>
+    </div>
 </body>
 </html>
