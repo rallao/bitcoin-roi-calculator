@@ -9,41 +9,53 @@ const $form = $('form');
 const $input = $('input');
 
 // Setting temporary variables from the form
-let assetSelected = 'bitcoin';
-let amountSelected = 1000;
-let dateSelected = '30-12-2018'
+var assetSelected;
+var amountSelected;
+var dateSelected; //date format dd-mm-yyyy to api works
 
 // Functions
 
+
+// Event listener when user click button
+function handleGetData (event){
+    event.preventDefault();
+    amountSelected = $("#amount-data").val();
+    assetSelected = $("#asset-data").val();
+    dateSelected = $("#date-data").val();
+    // format date to api requirimements dd-mm-yyy
+    dateSelected = dateSelected.split("-").reverse().join("-")
+
+    // console.log updated variables.
+    console.log(amountSelected);
+    console.log(dateSelected);
+    console.log(assetSelected);
+
+    // call the functions that fetch the data.
+    getHistoricalPrice();
+    getCurrentPrice();
+}
 // Bitcoin Current price
-$.ajax(`${CURRENT_PRICE_API_URL}?ids=${assetSelected}&vs_currencies=usd`).then(function(data) {
+function getCurrentPrice() {$.ajax(`${CURRENT_PRICE_API_URL}?ids=${assetSelected}&vs_currencies=usd`).then(function(data) {
     currentPrice = data;
     console.log(currentPrice.bitcoin.usd);
 }, function(error){
     console.log(error);
 });
-
+}
 
 // Bitcoin historical price
-$.ajax(`${HIST_PRICE_API_URL}${assetSelected}/history?date=${dateSelected}`).then(function(data) {
+function getHistoricalPrice() {$.ajax(`${HIST_PRICE_API_URL}${assetSelected}/history?date=${dateSelected}`).then(function(data) {
     historicalPrice = data
     console.log(historicalPrice.market_data.current_price.usd);
 }, function(error){
     console.log(error);
 });
-
-
-function handleGetData (event){
-    event.preventDefault();
-    const amountSelected = $("#amount-data").val();
-    const dateSelected = $("#date-data").val();
-    const assetSelected = $("#asset-data").val();
-    console.log(amountSelected + dateSelected + assetSelected);
 }
 
 
+// Call the handleGetData() function when user click
 $form.on('submit', handleGetData);
-//TODO: change the 'selected' variables to the input form
-//TODO: Build a function that calculate = (currentPrice / historicalPrice)/historicalPrice
+// TODO: change the 'selected' variables to the input form
+// TODO: Build a function that calculate = (currentPrice / historicalPrice)/historicalPrice
     // returnOverInvestment = ((current_price / historicalPrice) / historicalPrice)*100
     // console.log(returnOverInvestment);
