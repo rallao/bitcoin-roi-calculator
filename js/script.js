@@ -35,15 +35,15 @@ $.ajax(`${HIST_PRICE_API_URL}${assetSelected}/history?date=${dateSelected}`).the
 
 function handleGetData (event){
     event.preventDefault();
-    const amount = $("#amount-data").val();
-    const date = $("#date-data").val();
-    const asset = $("#asset-data").val();
-    console.log("This is a test" + amount + date);
+    const amountSelected = $("#amount-data").val();
+    const dateSelected = $("#date-data").val();
+    const assetSelected = $("#asset-data").val();
+    console.log(amountSelected + dateSelected + assetSelected);
 }
 
 
 $form.on('submit', handleGetData);
-
+//TODO: change the 'selected' variables to the input form
 //TODO: Build a function that calculate = (currentPrice / historicalPrice)/historicalPrice
     // returnOverInvestment = ((current_price / historicalPrice) / historicalPrice)*100
     // console.log(returnOverInvestment);
