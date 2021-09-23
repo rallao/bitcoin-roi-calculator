@@ -2,13 +2,13 @@
 const CURRENT_PRICE_API_URL = 'https://api.coingecko.com/api/v3/simple/price'
 const HIST_PRICE_API_URL = 'https://api.coingecko.com/api/v3/coins/'
 
-let currentPrice;
-let historicalPrice;
-
 const $form = $('form');
 const $input = $('input');
 
 // Defining empty variables
+let currentPrice;
+let historicalPrice;
+
 let assetSelected;
 let amountSelected;
 let dateSelected; //date format needs to be in 'dd-mm-yyyy' for the api in order to work
@@ -17,17 +17,19 @@ let dateSelected; //date format needs to be in 'dd-mm-yyyy' for the api in order
 // Event listener when user click button
 async function handleGetData (event){
     event.preventDefault();
+   
     // grab value from form and update variables.
     amountSelected = $("#amount-data").val();
     assetSelected = $("#asset-data").val();
     dateSelected = $("#date-data").val();
+    
     // format date to api requirimements dd-mm-yyy
     dateSelected = dateSelected.split("-").reverse().join("-")
 
     // console.log updated variables.
     console.log("you selected " + amountSelected + " in USD");
     console.log("You selected the date of " + dateSelected);
-    console.log("you chooose " + assetSelected);
+    console.log("you chooosed " + assetSelected);
 
     // call the functions that fetch api data.
     let hp = await getHistoricalPrice();
@@ -41,8 +43,8 @@ async function handleGetData (event){
 
     // call the function that makes the roi.
     returnOverInvestment();
-    render()
 }
+
 // asset current price function.
 function getCurrentPrice() {
     return $.ajax(`${CURRENT_PRICE_API_URL}?ids=${assetSelected}&vs_currencies=usd`);
@@ -55,17 +57,13 @@ function getCurrentPrice() {
 
 // Return over investment function.
 function returnOverInvestment(){
-
     let roi = parseFloat(100 * (currentPrice - historicalPrice) / historicalPrice).toFixed(2); //ROI calculation with only two decimals
     let winLoss = Math.round(amountSelected*(1+(roi/100)));
     console.log(roi+"%");
     console.log(winLoss);
     console.log(`Your ${assetSelected} would be worth ${winLoss} USD now`);
+    $("#text-results").append(`<p>Your would be worth USD now</p> ${winLoss} thats ${roi+"%"} over your ${amountSelected} initial investment`);
 };
-
-function render () {
-    
-}
 
 // Call the handleGetData() function when user click
 $form.on('submit', handleGetData);

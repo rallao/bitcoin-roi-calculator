@@ -5,21 +5,28 @@
 
 #container {
     display: flex;
-    border-radius: 2px;
-    border: 1px solid black;
+    border-radius: 8px;
     padding: 20px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    background-color: #f7b750;
 }
 
 footer {
     align-items: center;
     text-align: center;
-    color: whitesmoke;
+    color: #1b1b1b;
     width: 100%;
     position: absolute;
     bottom: 0;
-    height: 2.5rem;     
+    height: 2.5rem;
+    font-style: italic;     
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    background-color: #f7b750
 }
