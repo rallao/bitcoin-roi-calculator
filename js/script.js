@@ -15,7 +15,7 @@ let dateSelected; //date format needs to be in 'dd-mm-yyyy' for the api in order
 
 // Functions
 // Event listener when user click button
-function handleGetData (event){
+async function handleGetData (event){
     event.preventDefault();
     // grab value from form and update variables.
     amountSelected = $("#amount-data").val();
@@ -25,41 +25,47 @@ function handleGetData (event){
     dateSelected = dateSelected.split("-").reverse().join("-")
 
     // console.log updated variables.
-    console.log(amountSelected);
-    console.log(dateSelected);
-    console.log(assetSelected);
+    console.log("you selected " + amountSelected + " in USD");
+    console.log("You selected the date of " + dateSelected);
+    console.log("you chooose " + assetSelected);
 
     // call the functions that fetch api data.
-    getHistoricalPrice();
-    getCurrentPrice();
+    let hp = await getHistoricalPrice();
+    let cp = await getCurrentPrice();
+
+    historicalPrice = hp.market_data.current_price.usd
+    currentPrice = cp.bitcoin.usd
+    
+    console.log(`The price of ${assetSelected} in ${dateSelected} was`, historicalPrice);
+    console.log('inside handleGetData ', currentPrice);
 
     // call the function that makes the roi.
     returnOverInvestment();
+    render()
 }
 // asset current price function.
-function getCurrentPrice() {$.ajax(`${CURRENT_PRICE_API_URL}?ids=${assetSelected}&vs_currencies=usd`).then(function(data) {
-    currentPrice = data.assetSelected.usd;
-    console.log(`The current price of ${assetSelected} is ${currentPrice}`);
-}, function(error){
-    console.log(error);
-});
+function getCurrentPrice() {
+    return $.ajax(`${CURRENT_PRICE_API_URL}?ids=${assetSelected}&vs_currencies=usd`);
 }
 
 // asset historical price funtcion.
-function getHistoricalPrice() {$.ajax(`${HIST_PRICE_API_URL}${assetSelected}/history?date=${dateSelected}`).then(function(data) {
-    historicalPrice = data.market_data.current_price.usd
-    console.log(`The price of ${assetSelected} in ${dateSelected} was ${historicalPrice}`);
-}, function(error){
-    console.log(error);
-});
+ function getHistoricalPrice() {
+     return $.ajax(`${HIST_PRICE_API_URL}${assetSelected}/history?date=${dateSelected}`);
 }
 
 // Return over investment function.
 function returnOverInvestment(){
-    let roi = parseInt(100 * (currentPrice - historicalPrice) / historicalPrice);
-    console.log(roi);
+
+    let roi = parseFloat(100 * (currentPrice - historicalPrice) / historicalPrice).toFixed(2); //ROI calculation with only two decimals
+    let winLoss = Math.round(amountSelected*(1+(roi/100)));
+    console.log(roi+"%");
+    console.log(winLoss);
+    console.log(`Your ${assetSelected} would be worth ${winLoss} USD now`);
 };
 
+function render () {
+    
+}
 
 // Call the handleGetData() function when user click
 $form.on('submit', handleGetData);
