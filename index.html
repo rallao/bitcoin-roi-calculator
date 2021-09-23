@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script defer src="./js/script.js"></script>
@@ -13,8 +16,7 @@
 </head>
 
 <body>
-    <h1>Check how much could you have</h1>
-    <div id=container>
+    <main id=container>
         <p>How much you would have if you had bought</p>
         <form name="submit">
             <input type="text" placeholder="$1000" id="amount-data">
@@ -27,9 +29,13 @@
             <label>
                 <input type="date" name="month" id="date-data">
             </label>
+            <br>
             <button type="submit" name="submit-button">Ok show me 🥲</button>
         </form>
-    </div>
+    </main>
+    <footer>
+        <p>© 2021, developed by <a href="https://www.linkedin.com/in/raimundollao/">rallao</a></p>
+    </footer>
 </body>
 
 </html>
