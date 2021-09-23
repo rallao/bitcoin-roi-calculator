@@ -8,14 +8,12 @@ let historicalPrice = ''
 const $form = $('form');
 const $input = $('input');
 
-// Setting temporary variables from the form
-var assetSelected;
-var amountSelected;
-var dateSelected; //date format dd-mm-yyyy to api works
+// Defining empty variables
+let assetSelected;
+let amountSelected;
+let dateSelected; //date format needs to be in 'dd-mm-yyyy' for the api in order to work
 
 // Functions
-
-
 // Event listener when user click button
 function handleGetData (event){
     event.preventDefault();
@@ -33,11 +31,12 @@ function handleGetData (event){
     // call the functions that fetch the data.
     getHistoricalPrice();
     getCurrentPrice();
+    returnOverInvestment();
 }
 // Bitcoin Current price
 function getCurrentPrice() {$.ajax(`${CURRENT_PRICE_API_URL}?ids=${assetSelected}&vs_currencies=usd`).then(function(data) {
-    currentPrice = data;
-    console.log(currentPrice.bitcoin.usd);
+    currentPrice = data.bitcoin.usd;
+    console.log(currentPrice);
 }, function(error){
     console.log(error);
 });
@@ -45,17 +44,19 @@ function getCurrentPrice() {$.ajax(`${CURRENT_PRICE_API_URL}?ids=${assetSelected
 
 // Bitcoin historical price
 function getHistoricalPrice() {$.ajax(`${HIST_PRICE_API_URL}${assetSelected}/history?date=${dateSelected}`).then(function(data) {
-    historicalPrice = data
-    console.log(historicalPrice.market_data.current_price.usd);
+    historicalPrice = data.market_data.current_price.usd
+    console.log(historicalPrice);
 }, function(error){
     console.log(error);
 });
 }
 
+// return over investment function.
+// function returnOverInvestment(){
+//     var roi = (currentPrice / historicalPrice) / historicalPrice * 100
+// };
+// console.log(roi);
+
 
 // Call the handleGetData() function when user click
 $form.on('submit', handleGetData);
-// TODO: change the 'selected' variables to the input form
-// TODO: Build a function that calculate = (currentPrice / historicalPrice)/historicalPrice
-    // returnOverInvestment = ((current_price / historicalPrice) / historicalPrice)*100
-    // console.log(returnOverInvestment);
