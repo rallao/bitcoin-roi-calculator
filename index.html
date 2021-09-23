@@ -20,24 +20,25 @@
     <!-- <header>
     </header> -->
     <main id=container>
-        <p>How much you would have if you had bought</p>
+        <div class="background" id="inside-container">
+        <p class="background">How much you would have if you had bought</p>
         <form name="submit">
             <input type="text" placeholder="$1000" id="amount-data">
-            <p>in</p>
+            <p class="background">in</p>
             <select id="asset-data">
                 <option value="bitcoin">Bitcoin</option>
                 <option value="ethereum">Ethereum</option>
             </select>
-            <p>on</p>
-            <label>
+            <p class="background">on</p>
+            <label class="background">
                 <input type="date" name="month" id="date-data">
             </label>
-            <br>
             <button type="submit" name="submit-button">Ok show me 🥲</button>
-            <div>
-                <p id="text-results"></p>
+            <div class="background">
+                <p id="text-results" class="background"></p>
             </div>
         </form>
+        </div>
     </main>
     <footer>
         <p>© 2021, developed by <a href="https://www.linkedin.com/in/raimundollao/">rallao</a></p>

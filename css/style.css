@@ -1,18 +1,10 @@
+/* Elements */
 * {
     background-color: #F39C12;
     font-family: 'Roboto', sans-serif;
+    justify-content: center;
 }
 
-#container {
-    display: flex;
-    border-radius: 8px;
-    padding: 20px;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    font-size: 1.5rem;
-    background-color: #f7b750;
-}
 
 footer {
     align-items: center;
@@ -22,11 +14,56 @@ footer {
     position: absolute;
     bottom: 0;
     height: 2.5rem;
-    font-style: italic;     
+    font-style: italic;
+    background-color: #F39C12;     
 }
 
 form{
     display: flex;
     flex-direction: column;
     background-color: #f7b750
+}
+button {
+    background-color: aliceblue;
+    width: 200px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 20px;
+    padding-bottom: 0px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 0px;
+    width: 200px;
+}
+
+
+body{
+    justify-content: center;
+    display: flex;
+}
+/* Classes Selectors */
+#container {
+    margin-top: 100px;
+    display: flex;
+    border-radius: 8px;
+    padding: 20px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.5rem;
+    background-color: #f7b750;
+    width: 500px;
+    height: 600px;
+}
+
+
+/* ID Selectors */
+.background {
+    background-color: #f7b750; 
+}
+
+.inside-container {
+    width: 350px;
+    height: 400px;
 }
