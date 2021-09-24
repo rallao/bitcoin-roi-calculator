@@ -1,7 +1,5 @@
-
 /* Elements */
 * {
-    background-color: #F39C12;
     font-family: 'Roboto', sans-serif;
     justify-content: center;
 }
@@ -15,61 +13,81 @@ footer {
     bottom: 0;
     height: 2.5rem;
     font-style: italic;
-    background-color: #F39C12;     
+    background-color: #F39C12;
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
     background-color: #f7b750
 }
 
-button {
-    background-color: aliceblue;
-    justify-content: center;
-    width: 200px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 20px;
-    padding-bottom: 0px;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 0px;
-    width: 200px;
-    border-radius: 0;
-
-}
-
-body{
+body {
+    background-color: #F39C12;
     justify-content: center;
     display: flex;
 }
+
+img {
+    height: 100px
+}
+strong {
+    font-weight: 18000;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.button {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #F39C12;
+    border: none;
+    border-radius: 10px;
+  }
+  
+  .button:hover {background-color: #3e8e41}
+  
+  .button:active {
+    background-color: #3e8e41;
+
+    transform: translateY(4px);
+  }
 
 
 /* Classes Selectors */
 #container {
-    margin-top: 100px;
+    
+    margin-top: 50px;
     display: flex;
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 10px;
+    padding: 50px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     font-size: 1.5rem;
     background-color: #f7b750;
     width: 500px;
-    height: 600px;
+    height: 1000px;
 }
-
 
 /* ID Selectors */
-.background {
-    background-color: #f7b750; 
-}
-
 .inside-container {
+    justify-content: center;
     width: 350px;
     height: 400px;
 }
-

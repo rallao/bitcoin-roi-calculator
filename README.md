@@ -1,5 +1,5 @@
 # Bitcoin Calculator
-This app will calculate what your return would have been if you had bought bitcoin and held it until today.
+This app will calculate what your return would have been if you had bought bitcoin and hold it until today.
 
 # Techonologies Used
 - HTML
