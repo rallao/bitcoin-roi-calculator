@@ -51,18 +51,17 @@ select {
 
 /* ID Selectors */
 #container {
-
-    margin-top: 50px;
+    margin-top: 5px;
     display: flex;
     border-radius: 10px;
-    padding: 50px;
+    padding: 10px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1rem;
     background-color: #f7b750;
     width: 500px;
-    height: 1000px;
+    height: 690px;
 }
 
 /* class Selectors */
