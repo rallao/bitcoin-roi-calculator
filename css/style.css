@@ -31,11 +31,13 @@ body {
 img {
     height: 100px
 }
+
 strong {
     font-weight: 18000;
 }
 
-input, select {
+input,
+select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -44,34 +46,12 @@ input, select {
     border-radius: 4px;
     box-sizing: border-box;
 }
-.button {
-    display: inline-block;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 25px;
-    font-size: 24px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #F39C12;
-    border: none;
-    border-radius: 10px;
-  }
-  
-  .button:hover {background-color: #3e8e41}
-  
-  .button:active {
-    background-color: #3e8e41;
-
-    transform: translateY(4px);
-  }
 
 
-/* Classes Selectors */
+
+/* ID Selectors */
 #container {
-    
+
     margin-top: 50px;
     display: flex;
     border-radius: 10px;
@@ -85,9 +65,41 @@ input, select {
     height: 1000px;
 }
 
-/* ID Selectors */
+/* class Selectors */
 .inside-container {
     justify-content: center;
     width: 350px;
     height: 400px;
+}
+
+.button {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    padding: 15px 35px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #F39C12;
+    border: none;
+    border-radius: 10px;
+}
+
+.button:hover {
+    background-color: #3e8e41
+}
+
+.button:active {
+    background-color: #3e8e41;
+
+    transform: translateY(4px);
+}
+
+.test-flex {
+    display: flex;
+    flex-direction: row;
 }
