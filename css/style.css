@@ -1,10 +1,10 @@
+
 /* Elements */
 * {
     background-color: #F39C12;
     font-family: 'Roboto', sans-serif;
     justify-content: center;
 }
-
 
 footer {
     align-items: center;
@@ -23,8 +23,10 @@ form{
     flex-direction: column;
     background-color: #f7b750
 }
+
 button {
     background-color: aliceblue;
+    justify-content: center;
     width: 200px;
     margin-bottom: 0px;
     margin-left: 0px;
@@ -35,13 +37,16 @@ button {
     padding-right: 12px;
     padding-top: 0px;
     width: 200px;
-}
+    border-radius: 0;
 
+}
 
 body{
     justify-content: center;
     display: flex;
 }
+
+
 /* Classes Selectors */
 #container {
     margin-top: 100px;
@@ -67,3 +72,4 @@ body{
     width: 350px;
     height: 400px;
 }
+

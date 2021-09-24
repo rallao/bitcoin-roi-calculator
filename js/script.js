@@ -62,7 +62,7 @@ function returnOverInvestment(){
     console.log(roi+"%");
     console.log(winLoss);
     console.log(`Your ${assetSelected} would be worth ${winLoss} USD now`);
-    $("#text-results").append(`<p class="background">Your ${assetSelected } would be worth <strong>$${winLoss}USD</strong> now, thats <strong>${roi+"%"}</strong> over your $${amountSelected} initial investment </p> `);
+    $("#text-results").append(`<p class="background">Your ${assetSelected } would be worth <strong class="background">$${winLoss}USD</strong> now, thats <strong class=-"background">${roi+"%"}</strong> over your $${amountSelected} initial investment </p> `);
 };
 
 // Call the handleGetData() function when user click
