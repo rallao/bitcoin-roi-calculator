@@ -1,4 +1,4 @@
-/* Elements */
+/* Global styles */
 * {
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
@@ -12,19 +12,10 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f39c12;
+  color: #5a3511;
 }
 
-footer {
-  text-align: center;
-  color: #1b1b1b;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  height: 2.5rem;
-  font-style: italic;
-  background-color: #f39c12;
-}
-
+/* Container styles */
 #container {
   margin-top: 5px;
   display: flex;
@@ -47,6 +38,29 @@ footer {
   height: 400px;
 }
 
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: #f7b750;
+}
+
+form p {
+  font-size: 16px;
+}
+
+/* Input styles */
+input,
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(244, 232, 198);
+}
+
+/* Button styles */
 .button {
   display: inline-block;
   align-items: center;
@@ -64,30 +78,47 @@ footer {
   border-radius: 10px;
 }
 
-.button:hover,
 .button:active {
   background-color: #3e8e41;
   transform: translateY(4px);
 }
 
-.test-flex {
-  display: flex;
-  flex-direction: row;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  background-color: #f7b750;
-}
-
+/* Image styles */
 img {
   height: 100px;
 }
 
-input,
-select {
+.logo-image {
+  width: 100px;
+  height: auto;
+}
+
+/* ROI styles */
+#roi {
+  font-size: 2em;
+  text-align: center;
+}
+
+/* Divider styles */
+.divider {
+  width: 70%;
+  border: 1px solid #fbdaba;
+}
+
+/* Footer styles */
+footer {
+  text-align: center;
+  color: #1b1b1b;
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  position: absolute;
+  bottom: 0;
+  height: 2.5rem;
+  font-style: italic;
+  background-color: #f39c12;
+}
+
+/* Test styles */
+.test-flex {
+  display: flex;
+  flex-direction: row;
 }

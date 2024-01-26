@@ -16,36 +16,31 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
-    <script defer src="./js/script.js"></script>
+    <script defer src="/js/script.js"></script>
     <title>Bitcoin ROI Calculator</title>
   </head>
 
   <body>
     <main id="container">
-      <img src=assets/bitcoin-btc-logo.svg alt="bitcoin-image" />
+      <img src=assets/bitcoin-btc-logo.svg alt="bitcoin-image"
+      class="logo-image" />
       <h1>Bitcoin ROI Calculator</h1>
+      <hr class="divider" />
       <div id="inside-container">
         <div>
           <p>How much you would have if you had invested</p>
           <form name="submit">
-            <input type="text" placeholder="$1000" id="amount-data" />
-            <p>in</p>
-            <select id="asset-data">
-              <option value="bitcoin">Bitcoin</option>
-              <!-- <option value="ethereum">Ethereum</option> -->
-            </select>
+            <input type="number" placeholder="$1000" id="amount-data" />
+            <p>in Bitcoin On:</p>
+            <input type="date" name="month" id="date-data" />
+            <button type="submit" name="submit-button" class="button">
+              Ok show me 🥲
+            </button>
           </form>
         </div>
-        <p>on</p>
-        <label>
-          <input type="date" name="month" id="date-data" />
-        </label>
       </div>
-      <button type="submit" name="submit-button" class="button">
-        Ok show me 🥲
-      </button>
       <div>
-        <p id="text-results"></p>
+        <p id="roi"></p>
       </div>
     </main>
     <footer>

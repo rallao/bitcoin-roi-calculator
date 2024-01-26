@@ -1,71 +1,66 @@
-// const and variables
-const CURRENT_PRICE_API_URL = 'https://api.coingecko.com/api/v3/simple/price'
-const HIST_PRICE_API_URL = 'https://api.coingecko.com/api/v3/coins/'
+// Constants
+const CURRENT_PRICE_API_URL = "https://api.coingecko.com/api/v3/simple/price";
+const HIST_PRICE_API_URL = "https://api.coingecko.com/api/v3/coins/";
 
-const $form = $('form');
-const $input = $('input');
+// jQuery selectors
+const $form = $("form[name='submit']");
+const $amountInput = $("#amount-data");
+const $dateInput = $("#date-data");
+const $roiDisplay = $("#roi");
 
-// Defining empty variables
-let currentPrice;
-let historicalPrice;
+async function getHistoricalPrice(asset, date) {
+  const response = await fetch(
+    `${HIST_PRICE_API_URL}${asset}/history?date=${date}`
+  );
+  const data = await response.json();
+  return data;
+}
 
-let assetSelected;
-let amountSelected;
-let dateSelected; //date format needs to be in 'dd-mm-yyyy' for the api in order to work
+async function getCurrentPrice(asset) {
+  const response = await fetch(
+    `${CURRENT_PRICE_API_URL}?ids=${asset}&vs_currencies=usd`
+  );
+  const data = await response.json();
+  return data;
+}
 
-// Functions
+function returnOverInvestment(amountInvested, historicalPrice, currentPrice) {
+  const amountBought = amountInvested / historicalPrice;
+  const currentValue = amountBought * currentPrice;
+  const roi = ((currentValue - amountInvested) / amountInvested) * 100;
+  return roi.toFixed(2);
+}
+
 // Event listener when user click button
-async function handleGetData(event) {
-    event.preventDefault();
+$form.on("submit", async function (event) {
+  event.preventDefault();
+  await handleGetData();
+});
 
-    // grab value from form and update variables.
-    amountSelected = $("#amount-data").val();
-    assetSelected = $("#asset-data").val();
-    dateSelected = $("#date-data").val();
+async function handleGetData() {
+  // Grab value from form
+  const amountSelected = $amountInput.val();
+  let dateSelected = $dateInput.val();
 
-    // format date to api requirimements dd-mm-yyy
-    dateSelected = dateSelected.split("-").reverse().join("-")
+  // Format date to API requirements dd-mm-yyyy
+  dateSelected = dateSelected.split("-").reverse().join("-");
 
-    // console.log updated variables.
-    console.log("you selected " + amountSelected + " in USD");
-    console.log("You selected the date of " + dateSelected);
-    console.log("you chooosed " + assetSelected);
+  // Fetch API data
+  const historicalPriceData = await getHistoricalPrice("bitcoin", dateSelected);
+  const currentPriceData = await getCurrentPrice("bitcoin");
 
-    // call the functions that fetch api data.
-    let hp = await getHistoricalPrice();
-    let cp = await getCurrentPrice();
+  const historicalPrice = historicalPriceData.market_data.current_price.usd;
+  const currentPrice = currentPriceData.bitcoin.usd;
 
-    historicalPrice = hp.market_data.current_price.usd
-    currentPrice = cp.bitcoin.usd
+  console.log(`The price of bitcoin in ${dateSelected} was`, historicalPrice);
+  console.log("inside handleGetData ", currentPrice);
 
-    console.log(`The price of ${assetSelected} in ${dateSelected} was`, historicalPrice);
-    console.log('inside handleGetData ', currentPrice);
-
-    // call the function that makes the roi.
-    returnOverInvestment();
+  // Calculate and log the return over investment
+  const roi = returnOverInvestment(
+    amountSelected,
+    historicalPrice,
+    currentPrice
+  );
+  console.log(`The return over investment is ${roi}%`);
+  $roiDisplay.text(`The return over investment is ${roi}%`);
 }
-
-// asset current price function.
-function getCurrentPrice() {
-    return $.ajax(`${CURRENT_PRICE_API_URL}?ids=${assetSelected}&vs_currencies=usd`);
-}
-
-// asset historical price funtcion.
-function getHistoricalPrice() {
-    return $.ajax(`${HIST_PRICE_API_URL}${assetSelected}/history?date=${dateSelected}`);
-}
-
-// Return over investment function.
-function returnOverInvestment() {
-    let roi = parseFloat(100 * (currentPrice - historicalPrice) / historicalPrice).toFixed(2); //ROI calculation with only two decimals
-    let winLoss = Math.round(amountSelected * (1 + (roi / 100)));
-    console.log(roi + "%");
-    console.log(winLoss);
-    console.log(`Your ${assetSelected} would be worth ${winLoss} USD now`);
-
-    // render the data
-    $("#text-results").append(`<p>Your ${assetSelected } would be worth <strong>$${winLoss}USD</strong> now, thats <strong class=-"background">${roi+"%"}</strong> over your $${amountSelected} initial investment </p> `);
-};
-
-// Call the handleGetData() function when user click
-$form.on('submit', handleGetData);
