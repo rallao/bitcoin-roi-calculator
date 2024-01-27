@@ -22,26 +22,31 @@
 
   <body>
     <main id="container">
-      <img src=assets/bitcoin-btc-logo.svg alt="bitcoin-image"
-      class="logo-image" />
+      <img
+        src="assets/bitcoin-btc-logo.svg"
+        alt="Bitcoin logo"
+        class="logo-image"
+      />
       <h1>Bitcoin ROI Calculator</h1>
       <hr class="divider" />
-      <div id="inside-container">
-        <div>
-          <p>How much you would have if you had invested</p>
-          <form name="submit">
-            <input type="number" placeholder="$1000" id="amount-data" />
-            <p>in Bitcoin On:</p>
-            <input type="date" name="month" id="date-data" />
-            <button type="submit" name="submit-button" class="button">
-              Ok show me 🥲
-            </button>
-          </form>
-        </div>
-      </div>
-      <div>
-        <p id="roi"></p>
-      </div>
+
+      <p>How much you would have if you had invested:</p>
+      <form id="investment-form">
+        <label for="amount-data">Investment Amount:</label>
+        <input
+          type="number"
+          placeholder="$1000"
+          id="amount-data"
+          required
+          value="1000"
+        />
+
+        <label for="date-data">Investment Date:</label>
+        <input type="date" id="date-data" required value="2020-01-01" />
+
+        <button type="submit" class="button">Ok show me 🥲</button>
+      </form>
+      <p id="roi"></p>
     </main>
     <footer>
       <p>

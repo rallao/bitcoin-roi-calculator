@@ -3,7 +3,8 @@ const CURRENT_PRICE_API_URL = "https://api.coingecko.com/api/v3/simple/price";
 const HIST_PRICE_API_URL = "https://api.coingecko.com/api/v3/coins/";
 
 // jQuery selectors
-const $form = $("form[name='submit']");
+// jQuery selectors
+const $form = $("#investment-form");
 const $amountInput = $("#amount-data");
 const $dateInput = $("#date-data");
 const $roiDisplay = $("#roi");
@@ -52,15 +53,32 @@ async function handleGetData() {
   const historicalPrice = historicalPriceData.market_data.current_price.usd;
   const currentPrice = currentPriceData.bitcoin.usd;
 
-  console.log(`The price of bitcoin in ${dateSelected} was`, historicalPrice);
-  console.log("inside handleGetData ", currentPrice);
-
-  // Calculate and log the return over investment
+  // Calculate ROI and the amount of money won or lost
   const roi = returnOverInvestment(
     amountSelected,
     historicalPrice,
     currentPrice
   );
-  console.log(`The return over investment is ${roi}%`);
-  $roiDisplay.text(`The return over investment is ${roi}%`);
+  const moneyWonOrLost = amountSelected * (roi / 100);
+
+  // Create a message to display
+  let message;
+  if (moneyWonOrLost > 0) {
+    message = `You have made a gain of $${moneyWonOrLost.toFixed(
+      2
+    )}, which represents a ${roi}% return on your investment.`;
+  } else if (moneyWonOrLost < 0) {
+    message = `You have made a loss of $${Math.abs(moneyWonOrLost).toFixed(
+      2
+    )}, which represents a ${roi}% return on your investment.`;
+  } else {
+    message = `You neither gained nor lost money on your investment.`;
+  }
+
+  // Add the affiliate link to the message
+  message +=
+    ' <a href="https://www.binance.com/es/activity/referral-entry/CPA?ref=CPA_005HC6NFN9" target="_blank">Click here to invest more!</a>';
+
+  // Display the message
+  $roiDisplay.html(message);
 }
