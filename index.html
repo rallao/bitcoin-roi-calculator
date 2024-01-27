@@ -34,10 +34,16 @@
         <p>How much you would have if you had invested:</p>
         <form id="investment-form">
           <label for="amount-data">Investment Amount:</label>
-          <input type="number" placeholder="$1000" id="amount-data" />
+          <input
+            type="number"
+            placeholder="$1000"
+            id="amount-data"
+            required
+            value="1000"
+          />
 
           <label for="date-data">Investment Date:</label>
-          <input type="date" id="date-data" />
+          <input type="date" id="date-data" required value="2020-01-01" />
 
           <button type="submit" class="button">Ok show me 🥲</button>
         </form>
