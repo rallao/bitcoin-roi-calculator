@@ -1,23 +1,19 @@
-/* Global styles */
-* {
-  font-family: "Roboto", sans-serif;
-  box-sizing: border-box;
-}
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f39c12;
+  color: #5a3511;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh;
   margin: 0;
   padding: 0;
-  background-color: #f39c12;
-  color: #5a3511;
+  box-sizing: border-box;
 }
 
-/* Container styles */
 #container {
-  margin-top: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,30 +26,30 @@ body {
   font-size: 1rem;
 }
 
-.inside-container {
+#calculator {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 350px;
   height: 400px;
   font-size: 20px;
 }
 
-/* Form styles */
-form {
+#investment-form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #f7b750;
   font-size: 40px;
 }
 
-form p {
+#investment-form p {
   font-size: 20px;
 }
 
-/* Input styles */
-input,
-select {
+#investment-form input {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -62,7 +58,6 @@ select {
   background-color: rgb(244, 232, 198);
 }
 
-/* Button styles */
 .button {
   display: inline-block;
   align-items: center;
@@ -75,52 +70,17 @@ select {
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #f39c12;
-  border: none;
-  border-radius: 10px;
-}
-
-.button:active {
-  background-color: #3e8e41;
-  transform: translateY(4px);
-}
-
-/* Image styles */
-img {
-  height: 100px;
 }
 
 .logo-image {
-  width: 100px;
+  max-width: 25%;
   height: auto;
 }
 
-/* ROI styles */
-#roi {
-  font-size: 2em;
-  text-align: center;
-}
-
-/* Divider styles */
-.divider {
-  width: 70%;
-  border: 1px solid #fbdaba;
-}
-
-/* Footer styles */
 footer {
-  text-align: center;
-  color: #1b1b1b;
-  width: 100%;
-  position: absolute;
+  position: fixed;
+  left: 0;
   bottom: 0;
-  height: 2.5rem;
-  font-style: italic;
-  background-color: #f39c12;
-}
-
-/* Test styles */
-.test-flex {
-  display: flex;
-  flex-direction: row;
+  width: 100%;
+  text-align: center;
 }
