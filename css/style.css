@@ -36,6 +36,7 @@ body {
   justify-content: center;
   width: 350px;
   height: 400px;
+  font-size: 20px;
 }
 
 /* Form styles */
@@ -43,10 +44,11 @@ form {
   display: flex;
   flex-direction: column;
   background-color: #f7b750;
+  font-size: 40px;
 }
 
 form p {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 /* Input styles */
