@@ -2,7 +2,6 @@ To Do:
 - Fix the form font size
 - Add a button to clear the form
 - Add a big CTA on affiliate links
-- Upload site to github pages or whatever
 
 Next Features:
 - Add ethreum calulator roi
