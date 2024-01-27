@@ -58,6 +58,7 @@ body {
   background-color: rgb(244, 232, 198);
 }
 
+/* Button styles */
 .button {
   display: inline-block;
   align-items: center;
@@ -70,6 +71,14 @@ body {
   text-decoration: none;
   outline: none;
   color: #fff;
+  background-color: #f39c12;
+  border: none;
+  border-radius: 10px;
+}
+
+.button:active {
+  background-color: #3e8e41;
+  transform: translateY(4px);
 }
 
 .logo-image {
@@ -83,4 +92,11 @@ footer {
   bottom: 0;
   width: 100%;
   text-align: center;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid #f39c12;
+  width: 75%;
+  margin: 20px auto;
 }
