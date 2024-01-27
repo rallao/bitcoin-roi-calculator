@@ -1,0 +1,9 @@
+To Do:
+- Fix the form font size
+- Add a button to clear the form
+- Add a big CTA on affiliate links
+
+Next Features:
+- Add ethreum calulator roi
+- Select items from a list so you can calculate how much you could make buying bitcoin instead a iphone 10 in launch day.
+
