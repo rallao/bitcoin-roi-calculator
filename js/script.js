@@ -62,15 +62,23 @@ async function handleGetData() {
   const moneyWonOrLost = amountSelected * (roi / 100);
 
   // Create a message to display
-  let message = `The return over investment is ${roi}%. `;
+  let message;
   if (moneyWonOrLost > 0) {
-    message += `You won $${moneyWonOrLost.toFixed(2)}.`;
+    message = `You have made a gain of $${moneyWonOrLost.toFixed(
+      2
+    )}, which represents a ${roi}% return on your investment.`;
   } else if (moneyWonOrLost < 0) {
-    message += `You lost $${Math.abs(moneyWonOrLost).toFixed(2)}.`;
+    message = `You have made a loss of $${Math.abs(moneyWonOrLost).toFixed(
+      2
+    )}, which represents a ${roi}% return on your investment.`;
   } else {
-    message += `You neither won nor lost money.`;
+    message = `You neither gained nor lost money on your investment.`;
   }
 
+  // Add the affiliate link to the message
+  message +=
+    ' <a href="https://www.binance.com/es/activity/referral-entry/CPA?ref=CPA_005HC6NFN9" target="_blank">Click here to invest more!</a>';
+
   // Display the message
-  $roiDisplay.text(message);
+  $roiDisplay.html(message);
 }
